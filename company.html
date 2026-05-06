@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会社概要 | 株式会社東北技建</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--amber:#E8A020;--amber-light:#F5C84A;--green:#4A9B5F;--orange:#D46B1A;--dark:#1A2332;--dark2:#243040;--cream:#FDF8F0;--white:#ffffff;--gray:#6b7280}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden}
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,35,50,0.96);backdrop-filter:blur(12px);border-bottom:2px solid var(--amber)}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;flex-direction:column;text-decoration:none;line-height:1}
+.logo-en{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;color:var(--amber);letter-spacing:3px}
+.logo-jp{font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:2px;margin-top:2px}
+nav{display:flex;gap:4px}
+nav a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:13px;font-weight:500;padding:8px 14px;border-radius:4px;transition:all .2s;letter-spacing:1px}
+nav a:hover,nav a.active{color:var(--amber);background:rgba(232,160,32,0.1)}
+.header-cta{display:flex;align-items:center;gap:12px}
+.tel-header{color:var(--amber-light);font-family:'Oswald',sans-serif;font-size:16px;font-weight:600;letter-spacing:1px;text-decoration:none}
+.btn-header{background:var(--amber);color:var(--dark);font-weight:700;font-size:12px;padding:8px 16px;border-radius:4px;text-decoration:none;letter-spacing:1px;transition:all .2s;white-space:nowrap}
+.btn-header:hover{background:var(--amber-light)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{width:26px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;background:var(--dark);z-index:999;flex-direction:column;padding:16px 0;border-bottom:2px solid var(--amber)}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:15px;padding:14px 24px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.page-hero{margin-top:72px;background:var(--dark);padding:80px 24px 64px;position:relative;overflow:hidden}
+.page-hero::after{content:'COMPANY';font-family:'Oswald',sans-serif;font-size:120px;font-weight:700;color:rgba(255,255,255,0.03);position:absolute;right:-20px;bottom:-20px;line-height:1;pointer-events:none}
+.page-hero-inner{max-width:1200px;margin:0 auto}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:20px;letter-spacing:1px}
+.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}
+.breadcrumb span{color:var(--amber)}
+.page-hero-label{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:5px;color:var(--amber);margin-bottom:12px}
+.page-hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--white);line-height:1.3}
+.page-hero-title em{color:var(--amber);font-style:normal}
+/* MESSAGE */
+.message-section{padding:96px 24px;background:var(--cream);position:relative}
+.message-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(var(--amber) 1px,transparent 1px);background-size:32px 32px;opacity:0.07}
+.message-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:center;position:relative;z-index:1}
+.message-img{border-radius:12px;overflow:hidden;position:relative}
+.message-img img{width:100%;height:420px;object-fit:cover;display:block}
+.message-img-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(26,35,50,0.9));padding:24px;color:var(--white)}
+.message-img-name{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;margin-bottom:4px}
+.message-img-title{font-size:12px;color:rgba(255,255,255,0.7);letter-spacing:2px}
+.message-label{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:5px;color:var(--amber);margin-bottom:12px}
+.message-title{font-family:'Noto Serif JP',serif;font-size:clamp(22px,3vw,34px);font-weight:900;color:var(--dark);margin-bottom:28px;line-height:1.4}
+.message-text{font-size:15px;color:var(--dark);line-height:2.2;margin-bottom:16px}
+.message-sign{font-family:'Noto Serif JP',serif;font-size:16px;font-weight:700;color:var(--dark);margin-top:24px;text-align:right}
+.message-sign span{font-size:12px;color:var(--gray);font-weight:400;display:block;margin-bottom:4px;letter-spacing:2px}
+/* OVERVIEW */
+.overview-section{padding:96px 24px;background:var(--white)}
+.overview-inner{max-width:900px;margin:0 auto}
+.section-label{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:5px;color:var(--amber);margin-bottom:12px}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.5vw,40px);font-weight:900;margin-bottom:40px}
+.section-title span{color:var(--amber)}
+.overview-table{width:100%;border-collapse:collapse}
+.overview-table tr{border-bottom:1px solid rgba(0,0,0,0.08)}
+.overview-table tr:last-child{border-bottom:none}
+.overview-table th{width:200px;padding:20px 24px;background:var(--cream);font-size:14px;font-weight:700;color:var(--dark);text-align:left;vertical-align:top;border-left:3px solid var(--amber)}
+.overview-table td{padding:20px 24px;font-size:14px;color:var(--dark);line-height:1.8;vertical-align:top}
+/* MAP */
+.map-section{padding:0 24px 96px}
+.map-inner{max-width:1200px;margin:0 auto}
+.map-label{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:5px;color:var(--amber);margin-bottom:12px}
+.map-title{font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.5vw,40px);font-weight:900;margin-bottom:32px}
+.map-title span{color:var(--amber)}
+.map-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.map-card{border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.1)}
+.map-card-header{background:var(--dark);padding:16px 24px;display:flex;align-items:center;gap:12px}
+.map-card-name{font-family:'Noto Serif JP',serif;font-size:16px;font-weight:700;color:var(--white)}
+.map-card-badge{background:var(--amber);color:var(--dark);font-size:11px;font-weight:700;padding:3px 10px;border-radius:2px;letter-spacing:1px;font-family:'Oswald',sans-serif}
+.map-card-addr{background:var(--cream);padding:12px 24px;font-size:13px;color:var(--gray);line-height:1.6}
+.map-card iframe{width:100%;height:280px;display:block;border:none}
+/* CTA */
+.cta-band{background:var(--dark);padding:80px 24px;text-align:center;border-top:3px solid var(--amber)}
+.cta-band-title{font-family:'Noto Serif JP',serif;font-size:clamp(22px,3vw,36px);font-weight:900;color:var(--white);margin-bottom:12px}
+.cta-band-sub{color:rgba(255,255,255,0.6);font-size:15px;margin-bottom:36px}
+.btn-primary{background:var(--amber);color:var(--dark);font-weight:700;font-size:15px;padding:16px 36px;border-radius:4px;text-decoration:none;letter-spacing:1px;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--amber-light);transform:translateY(-2px)}
+.cta-band-tel{font-family:'Oswald',sans-serif;font-size:clamp(24px,3.5vw,42px);font-weight:700;color:var(--amber-light);letter-spacing:3px;text-decoration:none;display:block;margin-top:20px}
+footer{background:#111820;padding:64px 24px 32px;border-top:3px solid var(--amber)}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-logo-en{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--amber);letter-spacing:3px}
+.footer-logo-jp{font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;letter-spacing:2px;margin-bottom:20px}
+.footer-info{font-size:13px;color:rgba(255,255,255,0.55);line-height:2.0}
+.footer-heading{font-family:'Oswald',sans-serif;font-size:13px;color:var(--amber);letter-spacing:3px;margin-bottom:20px;padding-bottom:8px;border-bottom:1px solid rgba(232,160,32,0.3)}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:10px}
+.footer-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;transition:.2s;display:flex;align-items:center;gap:6px}
+.footer-links a::before{content:'›';color:var(--amber)}
+.footer-links a:hover{color:var(--amber)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;text-align:center}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.4)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+  nav,.header-cta{display:none}
+  .hamburger{display:flex}
+  .message-inner{grid-template-columns:1fr;gap:40px}
+  .map-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .overview-table th{width:140px}
+}
+@media(max-width:600px){
+  .footer-grid{grid-template-columns:1fr}
+  .overview-table th{display:block;width:100%;border-left:3px solid var(--amber);border-bottom:none}
+  .overview-table td{display:block;width:100%;padding-top:8px}
+}
+
+/* === COLOR PATCH: 3色ローテーション適用 === */
+
+/* ヘッダーボーダー → 3色グラデーション */
+header { border-bottom: 3px solid transparent !important; background-image: linear-gradient(rgba(26,35,50,0.96),rgba(26,35,50,0.96)), linear-gradient(90deg, var(--amber), var(--green), var(--orange)) !important; background-origin: border-box !important; background-clip: padding-box, border-box !important; border-bottom: 3px solid transparent !important; }
+
+/* フッターボーダー → グリーン */
+footer { border-top-color: var(--green) !important; }
+
+/* フッターロゴ下線 */
+.footer-heading { border-bottom-color: rgba(74,155,95,0.4) !important; }
+
+/* セクションラベル 色をローテーション */
+.feat-card:nth-child(1) { border-bottom-color: var(--amber) !important; }
+.feat-card:nth-child(2) { border-bottom-color: var(--green) !important; }
+.feat-card:nth-child(3) { border-bottom-color: var(--orange) !important; }
+
+.svc-card:nth-child(1) { border-left-color: var(--amber) !important; }
+.svc-card:nth-child(2) { border-left-color: var(--green) !important; }
+.svc-card:nth-child(3) { border-left-color: var(--orange) !important; }
+.svc-card:nth-child(4) { border-left-color: var(--amber) !important; }
+
+.work-info:nth-of-type(1) { border-top-color: var(--amber) !important; }
+
+/* 施工実績カード 3色ローテーション */
+.work-card:nth-child(1) .work-info { border-top-color: var(--amber) !important; }
+.work-card:nth-child(2) .work-info { border-top-color: var(--green) !important; }
+.work-card:nth-child(3) .work-info { border-top-color: var(--orange) !important; }
+.work-card:nth-child(4) .work-info { border-top-color: var(--amber) !important; }
+.work-card:nth-child(5) .work-info { border-top-color: var(--green) !important; }
+.work-card:nth-child(6) .work-info { border-top-color: var(--orange) !important; }
+.work-card:nth-child(7) .work-info { border-top-color: var(--amber) !important; }
+.work-card:nth-child(8) .work-info { border-top-color: var(--green) !important; }
+.work-card:nth-child(9) .work-info { border-top-color: var(--orange) !important; }
+
+/* 施工実績カードラベルも3色に */
+.work-card:nth-child(1) .work-label { background: var(--amber) !important; }
+.work-card:nth-child(2) .work-label { background: var(--green) !important; color: var(--white) !important; }
+.work-card:nth-child(3) .work-label { background: var(--orange) !important; color: var(--white) !important; }
+.work-card:nth-child(4) .work-label { background: var(--amber) !important; }
+.work-card:nth-child(5) .work-label { background: var(--green) !important; color: var(--white) !important; }
+.work-card:nth-child(6) .work-label { background: var(--orange) !important; color: var(--white) !important; }
+.work-card:nth-child(7) .work-label { background: var(--amber) !important; }
+.work-card:nth-child(8) .work-label { background: var(--green) !important; color: var(--white) !important; }
+.work-card:nth-child(9) .work-label { background: var(--orange) !important; color: var(--white) !important; }
+
+/* stepサークル 3色ローテーション */
+.step:nth-child(1) .step-circle { border-color: var(--amber) !important; color: var(--amber) !important; }
+.step:nth-child(2) .step-circle { border-color: var(--green) !important; color: var(--green) !important; }
+.step:nth-child(3) .step-circle { border-color: var(--orange) !important; color: var(--orange) !important; }
+.step:nth-child(4) .step-circle { border-color: var(--amber) !important; color: var(--amber) !important; }
+.step:nth-child(1):hover .step-circle { background: var(--amber) !important; color: var(--dark) !important; }
+.step:nth-child(2):hover .step-circle { background: var(--green) !important; color: var(--white) !important; }
+.step:nth-child(3):hover .step-circle { background: var(--orange) !important; color: var(--white) !important; }
+.step:nth-child(4):hover .step-circle { background: var(--amber) !important; color: var(--dark) !important; }
+
+/* フロー横線グラデーション → 3色 */
+.flow-steps::before { background: linear-gradient(90deg, var(--amber), var(--green), var(--orange)) !important; }
+
+/* appeal-card 3色ローテーション */
+.appeal-card:nth-child(1) { border-top-color: var(--amber) !important; }
+.appeal-card:nth-child(2) { border-top-color: var(--green) !important; }
+.appeal-card:nth-child(3) { border-top-color: var(--orange) !important; }
+.appeal-card:nth-child(4) { border-top-color: var(--amber) !important; }
+
+/* voice-card 3色 */
+.voice-card:nth-child(1) { border-bottom-color: var(--amber) !important; }
+.voice-card:nth-child(2) { border-bottom-color: var(--green) !important; }
+.voice-card:nth-child(3) { border-bottom-color: var(--orange) !important; }
+
+/* job-card header 3色 */
+.job-card:nth-child(1) .job-card-header { border-left: 6px solid var(--amber); }
+.job-card:nth-child(2) .job-card-header { border-left: 6px solid var(--green); }
+.job-card:nth-child(3) .job-card-header { border-left: 6px solid var(--orange); }
+
+/* info-card 3色 */
+.info-card:nth-child(1) { border-top-color: var(--amber) !important; }
+.info-card:nth-child(2) { border-top-color: var(--green) !important; }
+.info-card:nth-child(3) { border-top-color: var(--orange) !important; }
+
+/* svc-img-badge 3色 */
+.svc-section:nth-of-type(1) .svc-img-badge { background: var(--amber) !important; color: var(--dark) !important; }
+.svc-section:nth-of-type(2) .svc-img-badge { background: var(--green) !important; color: var(--white) !important; }
+.svc-section:nth-of-type(3) .svc-img-badge { background: var(--orange) !important; color: var(--white) !important; }
+.svc-section:nth-of-type(4) .svc-img-badge { background: var(--amber) !important; color: var(--dark) !important; }
+
+/* page-hero ページごとにラベル色変更 → section-labelは amber固定でOK */
+/* overview-table th border-left 3色 */
+.overview-table tr:nth-child(3n+1) th { border-left-color: var(--amber) !important; }
+.overview-table tr:nth-child(3n+2) th { border-left-color: var(--green) !important; }
+.overview-table tr:nth-child(3n+3) th { border-left-color: var(--orange) !important; }
+
+/* job-table th border-left 3色 */
+.job-table tr:nth-child(odd) th { border-left-color: var(--amber) !important; }
+.job-table tr:nth-child(even) th { border-left-color: var(--green) !important; }
+
+/* マーキーアイテムのダイヤ色を3色ローテーション */
+/* CSSで::before nth対応は難しいのでJS側で対応 */
+
+/* btn-primary ホバー時にグリーン系シャドウ追加 */
+.btn-primary:hover { box-shadow: 0 8px 24px rgba(74,155,95,0.35) !important; }
+
+/* hero badge border 3色 */
+.badge:nth-child(1) { border-color: var(--amber) !important; }
+.badge:nth-child(2) { border-color: var(--green) !important; }
+.badge:nth-child(3) { border-color: var(--orange) !important; }
+
+/* slide-dot active グリーン */
+.dot.active { background: var(--green) !important; }
+
+/* CTA section背景にグリーンのサークル追加 */
+.cta::before { background: rgba(74,155,95,0.07) !important; }
+
+/* page-hero bottom decoration */
+.page-hero { border-bottom: 3px solid var(--green); }
+
+.marquee-item { --dot-color: var(--amber); }
+.marquee-item::before { color: var(--dot-color) !important; }
+
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo"><span class="logo-en">TOHOKU GIKEN</span><span class="logo-jp">株式会社東北技建</span></a>
+    <nav>
+      <a href="index.html">TOP</a><a href="service.html">施工案内</a><a href="works.html">施工実績</a>
+      <a href="company.html" class="active">会社概要</a><a href="recruit.html">採用情報</a><a href="contact.html">お問い合わせ</a>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:0482251293" class="tel-header">📞 048-225-1293</a>
+      <a href="contact.html" class="btn-header">無料相談</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">TOP</a><a href="service.html">施工案内</a><a href="works.html">施工実績</a>
+  <a href="company.html">会社概要</a><a href="recruit.html">採用情報</a><a href="contact.html">お問い合わせ</a>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="index.html">TOP</a> › <span>会社概要</span></p>
+    <p class="page-hero-label">COMPANY</p>
+    <h1 class="page-hero-title">会社<em>概要</em></h1>
+  </div>
+</section>
+
+<!-- 代表メッセージ -->
+<section class="message-section">
+  <div class="message-inner">
+    <div class="message-img fade-up">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80" alt="代表取締役 齊藤 正">
+      <div class="message-img-caption">
+        <p class="message-img-name">齊藤 正</p>
+        <p class="message-img-title">代表取締役 / REPRESENTATIVE DIRECTOR</p>
+      </div>
+    </div>
+    <div class="fade-up">
+      <p class="message-label">MESSAGE</p>
+      <h2 class="message-title">まじめに、丁寧に、<br>スピーディーに。</h2>
+      <p class="message-text">株式会社東北技建は、埼玉県川口市を拠点に、一般建築・店舗内装・注文家具・外壁塗装の4つの専門領域でお客様の「理想の空間」を実現してまいりました。</p>
+      <p class="message-text">私たちが大切にしているのは、お客様との対話です。お客様のご要望をしっかりと伺い、技術と誠実さをもって一つひとつの現場に向き合います。自社に建築士・施工管理技士・熟練職人を揃え、設計から施工・アフターフォローまで一貫してお応えすることで、品質とコストの両立を実現しています。</p>
+      <p class="message-text">地域の皆様の暮らしと事業を支えるパートナーとして、これからも技術を磨き、誠実な仕事を続けてまいります。</p>
+      <p class="message-sign"><span>代表取締役</span>齊藤 正</p>
+    </div>
+  </div>
+</section>
+
+<!-- 会社概要テーブル -->
+<section class="overview-section">
+  <div class="overview-inner">
+    <p class="section-label fade-up">ABOUT</p>
+    <h2 class="section-title fade-up">会社<span>概要</span></h2>
+    <table class="overview-table fade-up">
+      <tr><th>会社名</th><td>株式会社東北技建</td></tr>
+      <tr><th>英語名</th><td>TOHOKU GIKEN Co., Ltd.</td></tr>
+      <tr><th>代表取締役</th><td>齊藤 正</td></tr>
+      <tr><th>本社所在地</th><td>〒332-0011 埼玉県川口市元郷２丁目５−１７</td></tr>
+      <tr><th>越谷事業所①</th><td>〒343-0826 埼玉県越谷市大間野町３丁目１５９−１ マルショウハイツ</td></tr>
+      <tr><th>越谷事業所②</th><td>埼玉県越谷市七左町４丁目６１−３</td></tr>
+      <tr><th>電話番号</th><td>本社：048-225-1293　越谷①：048-990-6691　越谷②：048-940-5628</td></tr>
+      <tr><th>事業内容</th><td>一般建築工事・店舗内装工事・注文家具製作・外壁塗装工事<br>建築一式工事・内装仕上工事・家具工事・クロス工事 ほか</td></tr>
+      <tr><th>従業員数</th><td>40名（職人20名・営業10名・事務10名）</td></tr>
+      <tr><th>在籍資格</th><td>2級建築士 6名 / 施工管理技士 6名</td></tr>
+      <tr><th>保有機材</th><td>油圧ショベル 2台 / 大型ダンプ車両 2台</td></tr>
+      <tr><th>営業時間</th><td>平日 8:00〜18:00（土曜応相談・日祝定休）</td></tr>
+      <tr><th>対応エリア</th><td>埼玉県全域・東京都・関東一円</td></tr>
+      <tr><th>許可・認証</th><td>建設業許可 / 社会保険完備 / 労災保険完備 / インボイス登録済</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- アクセス・地図 -->
+<section class="map-section">
+  <div class="map-inner">
+    <p class="map-label fade-up">ACCESS</p>
+    <h2 class="map-title fade-up">アクセス・<span>地図</span></h2>
+    <div class="map-grid">
+      <div class="map-card fade-up">
+        <div class="map-card-header">
+          <span class="map-card-badge">本社</span>
+          <span class="map-card-name">川口事業所</span>
+        </div>
+        <div class="map-card-addr">〒332-0011 埼玉県川口市元郷２丁目５−１７<br>TEL: 048-225-1293</div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3234.123456!2d139.7304422!3d35.7941059!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601890fa2f6c5e71%3A0x7c42bde9e6b3f1a2!2z5Z2Q546J77yS5LiB55uu5Lit5YWoMuS4geeUqOaciOmVtw!5e0!3m2!1sja!2sjp!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="map-card fade-up">
+        <div class="map-card-header">
+          <span class="map-card-badge">越谷①</span>
+          <span class="map-card-name">越谷大間野事業所</span>
+        </div>
+        <div class="map-card-addr">〒343-0826 埼玉県越谷市大間野町３丁目１５９−１ マルショウハイツ<br>TEL: 048-990-6691</div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3231.5!2d139.7723992!3d35.8692117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601894b3e8df8160%3A0xa08a21e02a03d64102!2z44CSMzQzLTA4MjYg5Z2J546J55yM6LaK5p2x5biC5aSn6ZaT6YeO55S677yT5LiB55uu!5e0!3m2!1sja!2sjp!4v1700000000001" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <h2 class="cta-band-title fade-up">まずはお気軽にご相談ください</h2>
+  <p class="cta-band-sub fade-up">現地調査・お見積りは無料です。</p>
+  <a href="contact.html" class="btn-primary fade-up">お問い合わせフォームへ →</a>
+  <a href="tel:0482251293" class="cta-band-tel fade-up">048-225-1293</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-en">TOHOKU GIKEN</div>
+        <div class="footer-logo-jp">株式会社東北技建</div>
+        <p class="footer-info">〒332-0011 埼玉県川口市元郷２丁目５−１７<br>TEL: 048-225-1293<br>代表取締役：齊藤 正</p>
+      </div>
+      <div>
+        <p class="footer-heading">SERVICES</p>
+        <ul class="footer-links">
+          <li><a href="service.html#architecture">一般建築</a></li>
+          <li><a href="service.html#interior">店舗内装</a></li>
+          <li><a href="service.html#furniture">注文家具</a></li>
+          <li><a href="service.html#painting">外壁塗装</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">PAGES</p>
+        <ul class="footer-links">
+          <li><a href="index.html">TOP</a></li>
+          <li><a href="works.html">施工実績</a></li>
+          <li><a href="company.html">会社概要</a></li>
+          <li><a href="recruit.html">採用情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2025 株式会社東北技建 All Rights Reserved.</p></div>
+  </div>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('active');document.getElementById('mobileNav').classList.toggle('open')});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+// マーキーアイテムに3色ローテーション
+(function(){
+  const items = document.querySelectorAll('.marquee-item');
+  const colors = ['var(--amber)', 'var(--green)', 'var(--orange)'];
+  items.forEach((el, i) => {
+    // ::before は直接変更できないのでカスタムプロパティで対応
+    el.style.setProperty('--dot-color', colors[i % 3]);
+  });
+})();
+</script>
+</body>
+</html>

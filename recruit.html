@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社東北技建</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--amber:#E8A020;--amber-light:#F5C84A;--green:#4A9B5F;--orange:#D46B1A;--dark:#1A2332;--dark2:#243040;--cream:#FDF8F0;--white:#ffffff;--gray:#6b7280}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden}
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,35,50,0.96);backdrop-filter:blur(12px);border-bottom:2px solid var(--amber)}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;flex-direction:column;text-decoration:none;line-height:1}
+.logo-en{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;color:var(--amber);letter-spacing:3px}
+.logo-jp{font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:2px;margin-top:2px}
+nav{display:flex;gap:4px}
+nav a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:13px;font-weight:500;padding:8px 14px;border-radius:4px;transition:all .2s;letter-spacing:1px}
+nav a:hover,nav a.active{color:var(--amber);background:rgba(232,160,32,0.1)}
+.header-cta{display:flex;align-items:center;gap:12px}
+.tel-header{color:var(--amber-light);font-family:'Oswald',sans-serif;font-size:16px;font-weight:600;letter-spacing:1px;text-decoration:none}
+.btn-header{background:var(--amber);color:var(--dark);font-weight:700;font-size:12px;padding:8px 16px;border-radius:4px;text-decoration:none;letter-spacing:1px;transition:all .2s;white-space:nowrap}
+.btn-header:hover{background:var(--amber-light)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{width:26px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;background:var(--dark);z-index:999;flex-direction:column;padding:16px 0;border-bottom:2px solid var(--amber)}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:15px;padding:14px 24px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.page-hero{margin-top:72px;background:var(--dark);padding:80px 24px 64px;position:relative;overflow:hidden}
+.page-hero::after{content:'RECRUIT';font-family:'Oswald',sans-serif;font-size:120px;font-weight:700;color:rgba(255,255,255,0.03);position:absolute;right:-20px;bottom:-20px;line-height:1;pointer-events:none}
+.page-hero-inner{max-width:1200px;margin:0 auto}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:20px;letter-spacing:1px}
+.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}
+.breadcrumb span{color:var(--amber)}
+.page-hero-label{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:5px;color:var(--amber);margin-bottom:12px}
+.page-hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--white);line-height:1.3}
+.page-hero-title em{color:var(--amber);font-style:normal}
+.page-hero-sub{color:rgba(255,255,255,0.6);font-size:15px;margin-top:16px}
+/* APPEAL */
+.appeal-section{padding:96px 24px;background:var(--dark)}
+.appeal-inner{max-width:1200px;margin:0 auto}
+.section-label{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:5px;color:var(--amber);margin-bottom:12px}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.5vw,40px);font-weight:900;margin-bottom:16px}
+.section-title span{color:var(--amber)}
+.section-title.light{color:var(--white)}
+.section-lead{color:rgba(255,255,255,0.6);font-size:15px;line-height:1.9;margin-bottom:56px;max-width:640px}
+.appeal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.appeal-card{background:var(--dark2);border-radius:12px;padding:36px 28px;border-top:4px solid var(--amber);transition:transform .3s}
+.appeal-card:hover{transform:translateY(-4px)}
+.appeal-icon{font-size:40px;margin-bottom:16px}
+.appeal-title{font-family:'Noto Serif JP',serif;font-size:17px;font-weight:700;color:var(--white);margin-bottom:12px}
+.appeal-text{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.8}
+/* VOICE */
+.voice-section{padding:96px 24px;background:var(--cream);position:relative}
+.voice-section::before{content:'';position:absolute;inset:0;background-image:radial-gradient(var(--amber) 1px,transparent 1px);background-size:32px 32px;opacity:0.07}
+.voice-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.voice-label{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:5px;color:var(--amber);margin-bottom:12px}
+.voice-title{font-family:'Noto Serif JP',serif;font-size:clamp(26px,3.5vw,40px);font-weight:900;margin-bottom:48px}
+.voice-title span{color:var(--amber)}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.voice-card{background:var(--white);border-radius:12px;padding:32px;position:relative;box-shadow:0 4px 20px rgba(0,0,0,0.07);border-bottom:4px solid var(--amber)}
+.voice-card::before{content:'"';font-family:'Oswald',sans-serif;font-size:80px;color:rgba(232,160,32,0.15);position:absolute;top:12px;right:20px;line-height:1}
+.voice-text{font-size:14px;color:var(--dark);line-height:1.9;margin-bottom:20px}
+.voice-meta{display:flex;align-items:center;gap:12px}
+.voice-avatar{width:48px;height:48px;border-radius:50%;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:20px}
+.voice-name{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;color:var(--dark)}
+.voice-role{font-size:12px;color:var(--gray);margin-top:2px}
+/* JOB TABLE */
+.job-section{padding:96px 24px;background:var(--white)}
+.job-inner{max-width:1100px;margin:0 auto}
+.job-card{margin-bottom:48px;border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.08)}
+.job-card-header{background:var(--dark);padding:20px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.job-card-title{font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;color:var(--white)}
+.job-badge{background:var(--amber);color:var(--dark);font-family:'Oswald',sans-serif;font-size:12px;font-weight:700;padding:6px 16px;border-radius:2px;letter-spacing:2px}
+.job-table{width:100%;border-collapse:collapse}
+.job-table tr{border-bottom:1px solid rgba(0,0,0,0.07)}
+.job-table tr:last-child{border-bottom:none}
+.job-table th{width:180px;padding:18px 24px;background:var(--cream);font-size:13px;font-weight:700;color:var(--dark);text-align:left;vertical-align:top;border-left:3px solid var(--amber)}
+.job-table td{padding:18px 24px;font-size:13px;color:var(--dark);line-height:1.8}
+/* FLOW */
+.flow-section{padding:96px 24px;background:var(--dark)}
+.flow-inner{max-width:1000px;margin:0 auto}
+.flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;position:relative}
+.flow-steps::before{content:'';position:absolute;top:48px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--amber),var(--orange));z-index:0}
+.step{text-align:center;position:relative;z-index:1;padding:0 16px}
+.step-circle{width:96px;height:96px;border-radius:50%;background:var(--dark2);border:4px solid var(--amber);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-family:'Oswald',sans-serif;font-size:28px;font-weight:700;color:var(--amber);transition:.3s}
+.step:hover .step-circle{background:var(--amber);color:var(--dark)}
+.step-title{font-family:'Noto Serif JP',serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:8px}
+.step-text{font-size:12px;color:rgba(255,255,255,0.6);line-height:1.7}
+/* CTA */
+.cta-section{padding:96px 24px;background:var(--amber);text-align:center}
+.cta-title{font-family:'Noto Serif JP',serif;font-size:clamp(24px,3.5vw,40px);font-weight:900;color:var(--dark);margin-bottom:12px}
+.cta-sub{color:rgba(26,35,50,0.7);font-size:15px;margin-bottom:36px}
+.btn-dark{background:var(--dark);color:var(--white);font-weight:700;font-size:15px;padding:18px 48px;border-radius:4px;text-decoration:none;letter-spacing:1px;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+.btn-dark:hover{background:var(--dark2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+.cta-tel{font-family:'Oswald',sans-serif;font-size:clamp(24px,3.5vw,42px);font-weight:700;color:var(--dark);letter-spacing:3px;text-decoration:none;display:block;margin-top:24px}
+footer{background:#111820;padding:64px 24px 32px;border-top:3px solid var(--amber)}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-logo-en{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--amber);letter-spacing:3px}
+.footer-logo-jp{font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;letter-spacing:2px;margin-bottom:20px}
+.footer-info{font-size:13px;color:rgba(255,255,255,0.55);line-height:2.0}
+.footer-heading{font-family:'Oswald',sans-serif;font-size:13px;color:var(--amber);letter-spacing:3px;margin-bottom:20px;padding-bottom:8px;border-bottom:1px solid rgba(232,160,32,0.3)}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:10px}
+.footer-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;transition:.2s;display:flex;align-items:center;gap:6px}
+.footer-links a::before{content:'›';color:var(--amber)}
+.footer-links a:hover{color:var(--amber)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;text-align:center}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.4)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){
+  nav,.header-cta{display:none}
+  .hamburger{display:flex}
+  .appeal-grid{grid-template-columns:repeat(2,1fr)}
+  .voice-grid{grid-template-columns:1fr}
+  .flow-steps{grid-template-columns:repeat(2,1fr);gap:32px}
+  .flow-steps::before{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .appeal-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .flow-steps{grid-template-columns:1fr}
+  .job-table th{display:block;width:100%;border-left:3px solid var(--amber);border-bottom:none}
+  .job-table td{display:block;width:100%;padding-top:8px}
+}
+
+/* === COLOR PATCH: 3色ローテーション適用 === */
+
+/* ヘッダーボーダー → 3色グラデーション */
+header { border-bottom: 3px solid transparent !important; background-image: linear-gradient(rgba(26,35,50,0.96),rgba(26,35,50,0.96)), linear-gradient(90deg, var(--amber), var(--green), var(--orange)) !important; background-origin: border-box !important; background-clip: padding-box, border-box !important; border-bottom: 3px solid transparent !important; }
+
+/* フッターボーダー → グリーン */
+footer { border-top-color: var(--green) !important; }
+
+/* フッターロゴ下線 */
+.footer-heading { border-bottom-color: rgba(74,155,95,0.4) !important; }
+
+/* セクションラベル 色をローテーション */
+.feat-card:nth-child(1) { border-bottom-color: var(--amber) !important; }
+.feat-card:nth-child(2) { border-bottom-color: var(--green) !important; }
+.feat-card:nth-child(3) { border-bottom-color: var(--orange) !important; }
+
+.svc-card:nth-child(1) { border-left-color: var(--amber) !important; }
+.svc-card:nth-child(2) { border-left-color: var(--green) !important; }
+.svc-card:nth-child(3) { border-left-color: var(--orange) !important; }
+.svc-card:nth-child(4) { border-left-color: var(--amber) !important; }
+
+.work-info:nth-of-type(1) { border-top-color: var(--amber) !important; }
+
+/* 施工実績カード 3色ローテーション */
+.work-card:nth-child(1) .work-info { border-top-color: var(--amber) !important; }
+.work-card:nth-child(2) .work-info { border-top-color: var(--green) !important; }
+.work-card:nth-child(3) .work-info { border-top-color: var(--orange) !important; }
+.work-card:nth-child(4) .work-info { border-top-color: var(--amber) !important; }
+.work-card:nth-child(5) .work-info { border-top-color: var(--green) !important; }
+.work-card:nth-child(6) .work-info { border-top-color: var(--orange) !important; }
+.work-card:nth-child(7) .work-info { border-top-color: var(--amber) !important; }
+.work-card:nth-child(8) .work-info { border-top-color: var(--green) !important; }
+.work-card:nth-child(9) .work-info { border-top-color: var(--orange) !important; }
+
+/* 施工実績カードラベルも3色に */
+.work-card:nth-child(1) .work-label { background: var(--amber) !important; }
+.work-card:nth-child(2) .work-label { background: var(--green) !important; color: var(--white) !important; }
+.work-card:nth-child(3) .work-label { background: var(--orange) !important; color: var(--white) !important; }
+.work-card:nth-child(4) .work-label { background: var(--amber) !important; }
+.work-card:nth-child(5) .work-label { background: var(--green) !important; color: var(--white) !important; }
+.work-card:nth-child(6) .work-label { background: var(--orange) !important; color: var(--white) !important; }
+.work-card:nth-child(7) .work-label { background: var(--amber) !important; }
+.work-card:nth-child(8) .work-label { background: var(--green) !important; color: var(--white) !important; }
+.work-card:nth-child(9) .work-label { background: var(--orange) !important; color: var(--white) !important; }
+
+/* stepサークル 3色ローテーション */
+.step:nth-child(1) .step-circle { border-color: var(--amber) !important; color: var(--amber) !important; }
+.step:nth-child(2) .step-circle { border-color: var(--green) !important; color: var(--green) !important; }
+.step:nth-child(3) .step-circle { border-color: var(--orange) !important; color: var(--orange) !important; }
+.step:nth-child(4) .step-circle { border-color: var(--amber) !important; color: var(--amber) !important; }
+.step:nth-child(1):hover .step-circle { background: var(--amber) !important; color: var(--dark) !important; }
+.step:nth-child(2):hover .step-circle { background: var(--green) !important; color: var(--white) !important; }
+.step:nth-child(3):hover .step-circle { background: var(--orange) !important; color: var(--white) !important; }
+.step:nth-child(4):hover .step-circle { background: var(--amber) !important; color: var(--dark) !important; }
+
+/* フロー横線グラデーション → 3色 */
+.flow-steps::before { background: linear-gradient(90deg, var(--amber), var(--green), var(--orange)) !important; }
+
+/* appeal-card 3色ローテーション */
+.appeal-card:nth-child(1) { border-top-color: var(--amber) !important; }
+.appeal-card:nth-child(2) { border-top-color: var(--green) !important; }
+.appeal-card:nth-child(3) { border-top-color: var(--orange) !important; }
+.appeal-card:nth-child(4) { border-top-color: var(--amber) !important; }
+
+/* voice-card 3色 */
+.voice-card:nth-child(1) { border-bottom-color: var(--amber) !important; }
+.voice-card:nth-child(2) { border-bottom-color: var(--green) !important; }
+.voice-card:nth-child(3) { border-bottom-color: var(--orange) !important; }
+
+/* job-card header 3色 */
+.job-card:nth-child(1) .job-card-header { border-left: 6px solid var(--amber); }
+.job-card:nth-child(2) .job-card-header { border-left: 6px solid var(--green); }
+.job-card:nth-child(3) .job-card-header { border-left: 6px solid var(--orange); }
+
+/* info-card 3色 */
+.info-card:nth-child(1) { border-top-color: var(--amber) !important; }
+.info-card:nth-child(2) { border-top-color: var(--green) !important; }
+.info-card:nth-child(3) { border-top-color: var(--orange) !important; }
+
+/* svc-img-badge 3色 */
+.svc-section:nth-of-type(1) .svc-img-badge { background: var(--amber) !important; color: var(--dark) !important; }
+.svc-section:nth-of-type(2) .svc-img-badge { background: var(--green) !important; color: var(--white) !important; }
+.svc-section:nth-of-type(3) .svc-img-badge { background: var(--orange) !important; color: var(--white) !important; }
+.svc-section:nth-of-type(4) .svc-img-badge { background: var(--amber) !important; color: var(--dark) !important; }
+
+/* page-hero ページごとにラベル色変更 → section-labelは amber固定でOK */
+/* overview-table th border-left 3色 */
+.overview-table tr:nth-child(3n+1) th { border-left-color: var(--amber) !important; }
+.overview-table tr:nth-child(3n+2) th { border-left-color: var(--green) !important; }
+.overview-table tr:nth-child(3n+3) th { border-left-color: var(--orange) !important; }
+
+/* job-table th border-left 3色 */
+.job-table tr:nth-child(odd) th { border-left-color: var(--amber) !important; }
+.job-table tr:nth-child(even) th { border-left-color: var(--green) !important; }
+
+/* マーキーアイテムのダイヤ色を3色ローテーション */
+/* CSSで::before nth対応は難しいのでJS側で対応 */
+
+/* btn-primary ホバー時にグリーン系シャドウ追加 */
+.btn-primary:hover { box-shadow: 0 8px 24px rgba(74,155,95,0.35) !important; }
+
+/* hero badge border 3色 */
+.badge:nth-child(1) { border-color: var(--amber) !important; }
+.badge:nth-child(2) { border-color: var(--green) !important; }
+.badge:nth-child(3) { border-color: var(--orange) !important; }
+
+/* slide-dot active グリーン */
+.dot.active { background: var(--green) !important; }
+
+/* CTA section背景にグリーンのサークル追加 */
+.cta::before { background: rgba(74,155,95,0.07) !important; }
+
+/* page-hero bottom decoration */
+.page-hero { border-bottom: 3px solid var(--green); }
+
+.marquee-item { --dot-color: var(--amber); }
+.marquee-item::before { color: var(--dot-color) !important; }
+
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo"><span class="logo-en">TOHOKU GIKEN</span><span class="logo-jp">株式会社東北技建</span></a>
+    <nav>
+      <a href="index.html">TOP</a><a href="service.html">施工案内</a><a href="works.html">施工実績</a>
+      <a href="company.html">会社概要</a><a href="recruit.html" class="active">採用情報</a><a href="contact.html">お問い合わせ</a>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:0482251293" class="tel-header">📞 048-225-1293</a>
+      <a href="contact.html" class="btn-header">無料相談</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">TOP</a><a href="service.html">施工案内</a><a href="works.html">施工実績</a>
+  <a href="company.html">会社概要</a><a href="recruit.html">採用情報</a><a href="contact.html">お問い合わせ</a>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="index.html">TOP</a> › <span>採用情報</span></p>
+    <p class="page-hero-label">RECRUIT</p>
+    <h1 class="page-hero-title">採用<em>情報</em></h1>
+    <p class="page-hero-sub">技術を磨きたい方、建設業界で活躍したい方を歓迎します。</p>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="appeal-section">
+  <div class="appeal-inner">
+    <p class="section-label fade-up">WHY JOIN US</p>
+    <h2 class="section-title light fade-up">働く<span>魅力</span></h2>
+    <p class="section-lead fade-up">東北技建では、職人としての技術を磨きながら、チームで成長できる環境を整えています。</p>
+    <div class="appeal-grid">
+      <div class="appeal-card fade-up">
+        <div class="appeal-icon">🔨</div>
+        <h3 class="appeal-title">確かな技術が身につく</h3>
+        <p class="appeal-text">ベテラン職人から直接指導を受けられる環境。建築・内装・家具・塗装と幅広い現場経験を積めます。</p>
+      </div>
+      <div class="appeal-card fade-up">
+        <div class="appeal-icon">💰</div>
+        <h3 class="appeal-title">給与面談で納得の報酬</h3>
+        <p class="appeal-text">経験・スキルに応じた給与を個別面談で決定。頑張りをしっかり評価する制度を整えています。</p>
+      </div>
+      <div class="appeal-card fade-up">
+        <div class="appeal-icon">🏢</div>
+        <h3 class="appeal-title">安定した職場環境</h3>
+        <p class="appeal-text">社会保険・労災保険完備。建設業許可取得企業として、安定した案件と就業環境を提供します。</p>
+      </div>
+      <div class="appeal-card fade-up">
+        <div class="appeal-icon">🌱</div>
+        <h3 class="appeal-title">未経験・見習いも歓迎</h3>
+        <p class="appeal-text">家具内装見習い・現場管理見習いなど、未経験から始められる求人も積極募集中。一緒に成長しましょう。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- スタッフの声 -->
+<section class="voice-section">
+  <div class="voice-inner">
+    <p class="voice-label fade-up">STAFF VOICE</p>
+    <h2 class="voice-title fade-up">スタッフの<span>声</span></h2>
+    <div class="voice-grid">
+      <div class="voice-card fade-up">
+        <p class="voice-text">入社3年目ですが、先輩職人から丁寧に教えてもらえる環境のおかげで、今では一人で現場を任せてもらえるようになりました。技術が身につく実感があって、毎日やりがいを感じています。</p>
+        <div class="voice-meta">
+          <div class="voice-avatar">🔨</div>
+          <div><p class="voice-name">A.T.（28歳）</p><p class="voice-role">大工職人 / 入社3年目</p></div>
+        </div>
+      </div>
+      <div class="voice-card fade-up">
+        <p class="voice-text">内装見習いとして未経験で入社しましたが、社長も先輩もとても親切で、一から丁寧に指導してもらえました。建設業が初めてでも安心して働ける会社です。資格取得もサポートしてもらえています。</p>
+        <div class="voice-meta">
+          <div class="voice-avatar">🪚</div>
+          <div><p class="voice-name">K.M.（25歳）</p><p class="voice-role">内装職人 / 入社2年目</p></div>
+        </div>
+      </div>
+      <div class="voice-card fade-up">
+        <p class="voice-text">現場管理の仕事をしています。一般建築から店舗内装まで様々な現場を経験でき、建設業の幅広さを実感しています。チームワークが良く、困ったときは必ず誰かが助けてくれる職場です。</p>
+        <div class="voice-meta">
+          <div class="voice-avatar">📋</div>
+          <div><p class="voice-name">S.O.（32歳）</p><p class="voice-role">現場管理 / 入社5年目</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 求人詳細 -->
+<section class="job-section">
+  <div class="job-inner">
+    <p class="section-label fade-up">JOB DETAIL</p>
+    <h2 class="section-title fade-up">求人<span>詳細</span></h2>
+
+    <div class="job-card fade-up">
+      <div class="job-card-header">
+        <span class="job-card-title">大工職人・家具職人・木工職人</span>
+        <span class="job-badge">急募</span>
+      </div>
+      <table class="job-table">
+        <tr><th>給与</th><td>日給 18,000円〜（経験・スキルにより面談の上決定）</td></tr>
+        <tr><th>勤務時間</th><td>8:00〜17:00（現場により変動あり）</td></tr>
+        <tr><th>勤務地</th><td>埼玉県川口市・越谷市を中心とした関東一円の現場</td></tr>
+        <tr><th>雇用形態</th><td>正社員・請負（相談可）</td></tr>
+        <tr><th>休日・休暇</th><td>日曜定休、祝日、年末年始、夏季休暇</td></tr>
+        <tr><th>待遇・福利厚生</th><td>社会保険完備、労災保険完備、交通費支給、制服貸与</td></tr>
+        <tr><th>応募資格</th><td>経験者歓迎（職人経験1年以上）。資格不問。</td></tr>
+      </table>
+    </div>
+
+    <div class="job-card fade-up">
+      <div class="job-card-header">
+        <span class="job-card-title">現場管理見習い・家具内装見習い</span>
+        <span class="job-badge">急募</span>
+      </div>
+      <table class="job-table">
+        <tr><th>給与</th><td>日給 12,000円〜（経験・スキルにより面談の上決定）</td></tr>
+        <tr><th>勤務時間</th><td>8:00〜17:00（現場により変動あり）</td></tr>
+        <tr><th>勤務地</th><td>埼玉県川口市・越谷市を中心とした関東一円の現場</td></tr>
+        <tr><th>雇用形態</th><td>正社員</td></tr>
+        <tr><th>休日・休暇</th><td>日曜定休、祝日、年末年始、夏季休暇</td></tr>
+        <tr><th>待遇・福利厚生</th><td>社会保険完備、労災保険完備、交通費支給、資格取得支援</td></tr>
+        <tr><th>応募資格</th><td>未経験可。建設業に興味のある方であれば歓迎。普通自動車免許あると尚可。</td></tr>
+      </table>
+    </div>
+
+    <div class="job-card fade-up">
+      <div class="job-card-header">
+        <span class="job-card-title">運転手（配送・現場送迎）</span>
+        <span class="job-badge">急募</span>
+      </div>
+      <table class="job-table">
+        <tr><th>給与</th><td>日給 12,000円〜（面談の上決定）</td></tr>
+        <tr><th>勤務時間</th><td>7:00〜18:00（シフト相談可）</td></tr>
+        <tr><th>勤務地</th><td>埼玉県川口市・越谷市拠点、関東一円への配送</td></tr>
+        <tr><th>雇用形態</th><td>正社員・アルバイト（相談可）</td></tr>
+        <tr><th>休日・休暇</th><td>日曜定休、祝日、年末年始</td></tr>
+        <tr><th>待遇・福利厚生</th><td>社会保険完備、労災保険完備、交通費支給</td></tr>
+        <tr><th>応募資格</th><td>普通自動車免許（大型・中型あれば尚可）。建設業経験不問。</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 応募の流れ -->
+<section class="flow-section">
+  <div class="flow-inner">
+    <p class="section-label fade-up">HOW TO APPLY</p>
+    <h2 class="section-title light fade-up">応募の<span>流れ</span></h2>
+    <div class="flow-steps">
+      <div class="step fade-up">
+        <div class="step-circle">01</div>
+        <h3 class="step-title">お電話・フォームで応募</h3>
+        <p class="step-text">電話またはお問い合わせフォームからご連絡ください。</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-circle">02</div>
+        <h3 class="step-title">書類選考</h3>
+        <p class="step-text">履歴書をご提出いただき、書類審査を行います。</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-circle">03</div>
+        <h3 class="step-title">面接・面談</h3>
+        <p class="step-text">代表または担当者との面接。給与も面談で決定します。</p>
+      </div>
+      <div class="step fade-up">
+        <div class="step-circle">04</div>
+        <h3 class="step-title">採用・入社</h3>
+        <p class="step-text">内定後、入社日を調整。安心して働けるようサポートします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2 class="cta-title fade-up">一緒に働きませんか？</h2>
+  <p class="cta-sub fade-up">まずはお気軽にお電話またはフォームからご応募ください。</p>
+  <a href="contact.html" class="btn-dark fade-up">応募・お問い合わせはこちら →</a>
+  <a href="tel:0482251293" class="cta-tel fade-up">048-225-1293</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-en">TOHOKU GIKEN</div>
+        <div class="footer-logo-jp">株式会社東北技建</div>
+        <p class="footer-info">〒332-0011 埼玉県川口市元郷２丁目５−１７<br>TEL: 048-225-1293<br>代表取締役：齊藤 正</p>
+      </div>
+      <div>
+        <p class="footer-heading">SERVICES</p>
+        <ul class="footer-links">
+          <li><a href="service.html#architecture">一般建築</a></li>
+          <li><a href="service.html#interior">店舗内装</a></li>
+          <li><a href="service.html#furniture">注文家具</a></li>
+          <li><a href="service.html#painting">外壁塗装</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">PAGES</p>
+        <ul class="footer-links">
+          <li><a href="index.html">TOP</a></li>
+          <li><a href="works.html">施工実績</a></li>
+          <li><a href="company.html">会社概要</a></li>
+          <li><a href="recruit.html">採用情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2025 株式会社東北技建 All Rights Reserved.</p></div>
+  </div>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('active');document.getElementById('mobileNav').classList.toggle('open')});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+// マーキーアイテムに3色ローテーション
+(function(){
+  const items = document.querySelectorAll('.marquee-item');
+  const colors = ['var(--amber)', 'var(--green)', 'var(--orange)'];
+  items.forEach((el, i) => {
+    // ::before は直接変更できないのでカスタムプロパティで対応
+    el.style.setProperty('--dot-color', colors[i % 3]);
+  });
+})();
+</script>
+</body>
+</html>

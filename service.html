@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>施工案内 | 株式会社東北技建</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--amber:#E8A020;--amber-light:#F5C84A;--green:#4A9B5F;--orange:#D46B1A;--dark:#1A2332;--dark2:#243040;--cream:#FDF8F0;--white:#ffffff;--gray:#6b7280}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden}
+/* HEADER */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(26,35,50,0.96);backdrop-filter:blur(12px);border-bottom:2px solid var(--amber)}
+.header-inner{max-width:1280px;margin:0 auto;padding:0 24px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;flex-direction:column;text-decoration:none;line-height:1}
+.logo-en{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;color:var(--amber);letter-spacing:3px}
+.logo-jp{font-size:10px;color:rgba(255,255,255,0.7);letter-spacing:2px;margin-top:2px}
+nav{display:flex;gap:4px}
+nav a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:13px;font-weight:500;padding:8px 14px;border-radius:4px;transition:all .2s;letter-spacing:1px}
+nav a:hover,nav a.active{color:var(--amber);background:rgba(232,160,32,0.1)}
+.header-cta{display:flex;align-items:center;gap:12px}
+.tel-header{color:var(--amber-light);font-family:'Oswald',sans-serif;font-size:16px;font-weight:600;letter-spacing:1px;text-decoration:none}
+.btn-header{background:var(--amber);color:var(--dark);font-weight:700;font-size:12px;padding:8px 16px;border-radius:4px;text-decoration:none;letter-spacing:1px;transition:all .2s;white-space:nowrap}
+.btn-header:hover{background:var(--amber-light)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{width:26px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-nav{display:none;position:fixed;top:72px;left:0;right:0;background:var(--dark);z-index:999;flex-direction:column;padding:16px 0;border-bottom:2px solid var(--amber)}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:15px;padding:14px 24px;border-bottom:1px solid rgba(255,255,255,0.08);letter-spacing:1px}
+/* PAGE HERO */
+.page-hero{margin-top:72px;background:var(--dark);padding:80px 24px 64px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,160,32,0.08),transparent)}
+.page-hero::after{content:'SERVICE';font-family:'Oswald',sans-serif;font-size:140px;font-weight:700;color:rgba(255,255,255,0.03);position:absolute;right:-20px;bottom:-20px;line-height:1;pointer-events:none}
+.page-hero-inner{max-width:1200px;margin:0 auto}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:20px;letter-spacing:1px}
+.breadcrumb a{color:rgba(255,255,255,0.4);text-decoration:none}
+.breadcrumb a:hover{color:var(--amber)}
+.breadcrumb span{color:var(--amber)}
+.page-hero-label{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:5px;color:var(--amber);margin-bottom:12px}
+.page-hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(28px,4vw,52px);font-weight:900;color:var(--white);line-height:1.3}
+.page-hero-title em{color:var(--amber);font-style:normal}
+.page-hero-sub{color:rgba(255,255,255,0.6);font-size:15px;margin-top:16px;line-height:1.8}
+/* SERVICE SECTIONS */
+.svc-section{padding:96px 24px}
+.svc-section.dark{background:var(--dark)}
+.svc-section.light{background:var(--white)}
+.svc-section.cream{background:var(--cream)}
+.svc-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.svc-inner.reverse{direction:rtl}
+.svc-inner.reverse>*{direction:ltr}
+.svc-img-wrap{position:relative;border-radius:12px;overflow:hidden}
+.svc-img-wrap img{width:100%;height:440px;object-fit:cover;display:block;transition:transform .5s}
+.svc-img-wrap:hover img{transform:scale(1.04)}
+.svc-img-badge{position:absolute;bottom:24px;left:24px;background:var(--amber);color:var(--dark);font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;padding:8px 20px;border-radius:2px;letter-spacing:2px}
+.svc-body{}
+.svc-num{font-family:'Oswald',sans-serif;font-size:13px;color:var(--amber);letter-spacing:4px;margin-bottom:12px}
+.svc-title{font-family:'Noto Serif JP',serif;font-size:clamp(24px,3vw,36px);font-weight:900;margin-bottom:20px;line-height:1.3}
+.dark .svc-title{color:var(--white)}
+.svc-lead{font-size:15px;line-height:2.0;margin-bottom:28px}
+.dark .svc-lead{color:rgba(255,255,255,0.7)}
+.svc-features{list-style:none;margin-bottom:32px}
+.svc-features li{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;font-size:14px;line-height:1.6}
+.dark .svc-features li{color:rgba(255,255,255,0.75)}
+.svc-features li::before{content:'✓';color:var(--amber);font-weight:700;font-size:16px;flex-shrink:0;margin-top:1px}
+.price-note{background:rgba(232,160,32,0.1);border-left:3px solid var(--amber);padding:16px 20px;border-radius:0 8px 8px 0;font-size:13px;color:var(--gray);margin-bottom:32px}
+.dark .price-note{background:rgba(232,160,32,0.08);color:rgba(255,255,255,0.6)}
+.btn-primary{background:var(--amber);color:var(--dark);font-weight:700;font-size:15px;padding:16px 36px;border-radius:4px;text-decoration:none;letter-spacing:1px;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--amber-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(232,160,32,0.4)}
+/* CTA BAND */
+.cta-band{background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 100%);padding:80px 24px;text-align:center;border-top:3px solid var(--amber)}
+.cta-band-title{font-family:'Noto Serif JP',serif;font-size:clamp(22px,3vw,36px);font-weight:900;color:var(--white);margin-bottom:12px}
+.cta-band-sub{color:rgba(255,255,255,0.6);font-size:15px;margin-bottom:36px}
+.cta-band-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.cta-band-tel{font-family:'Oswald',sans-serif;font-size:clamp(24px,3.5vw,42px);font-weight:700;color:var(--amber-light);letter-spacing:3px;text-decoration:none}
+/* FOOTER */
+footer{background:#111820;padding:64px 24px 32px;border-top:3px solid var(--amber)}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-logo-en{font-family:'Oswald',sans-serif;font-size:22px;font-weight:700;color:var(--amber);letter-spacing:3px}
+.footer-logo-jp{font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;letter-spacing:2px;margin-bottom:20px}
+.footer-info{font-size:13px;color:rgba(255,255,255,0.55);line-height:2.0}
+.footer-heading{font-family:'Oswald',sans-serif;font-size:13px;color:var(--amber);letter-spacing:3px;margin-bottom:20px;padding-bottom:8px;border-bottom:1px solid rgba(232,160,32,0.3)}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:10px}
+.footer-links a{color:rgba(255,255,255,0.6);text-decoration:none;font-size:13px;transition:.2s;display:flex;align-items:center;gap:6px}
+.footer-links a::before{content:'›';color:var(--amber)}
+.footer-links a:hover{color:var(--amber)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;text-align:center}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.4)}
+/* ANIM */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav,.header-cta{display:none}
+  .hamburger{display:flex}
+  .svc-inner{grid-template-columns:1fr;gap:40px}
+  .svc-inner.reverse{direction:ltr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .svc-img-wrap img{height:260px}
+  .footer-grid{grid-template-columns:1fr}
+}
+
+/* === COLOR PATCH: 3色ローテーション適用 === */
+
+/* ヘッダーボーダー → 3色グラデーション */
+header { border-bottom: 3px solid transparent !important; background-image: linear-gradient(rgba(26,35,50,0.96),rgba(26,35,50,0.96)), linear-gradient(90deg, var(--amber), var(--green), var(--orange)) !important; background-origin: border-box !important; background-clip: padding-box, border-box !important; border-bottom: 3px solid transparent !important; }
+
+/* フッターボーダー → グリーン */
+footer { border-top-color: var(--green) !important; }
+
+/* フッターロゴ下線 */
+.footer-heading { border-bottom-color: rgba(74,155,95,0.4) !important; }
+
+/* セクションラベル 色をローテーション */
+.feat-card:nth-child(1) { border-bottom-color: var(--amber) !important; }
+.feat-card:nth-child(2) { border-bottom-color: var(--green) !important; }
+.feat-card:nth-child(3) { border-bottom-color: var(--orange) !important; }
+
+.svc-card:nth-child(1) { border-left-color: var(--amber) !important; }
+.svc-card:nth-child(2) { border-left-color: var(--green) !important; }
+.svc-card:nth-child(3) { border-left-color: var(--orange) !important; }
+.svc-card:nth-child(4) { border-left-color: var(--amber) !important; }
+
+.work-info:nth-of-type(1) { border-top-color: var(--amber) !important; }
+
+/* 施工実績カード 3色ローテーション */
+.work-card:nth-child(1) .work-info { border-top-color: var(--amber) !important; }
+.work-card:nth-child(2) .work-info { border-top-color: var(--green) !important; }
+.work-card:nth-child(3) .work-info { border-top-color: var(--orange) !important; }
+.work-card:nth-child(4) .work-info { border-top-color: var(--amber) !important; }
+.work-card:nth-child(5) .work-info { border-top-color: var(--green) !important; }
+.work-card:nth-child(6) .work-info { border-top-color: var(--orange) !important; }
+.work-card:nth-child(7) .work-info { border-top-color: var(--amber) !important; }
+.work-card:nth-child(8) .work-info { border-top-color: var(--green) !important; }
+.work-card:nth-child(9) .work-info { border-top-color: var(--orange) !important; }
+
+/* 施工実績カードラベルも3色に */
+.work-card:nth-child(1) .work-label { background: var(--amber) !important; }
+.work-card:nth-child(2) .work-label { background: var(--green) !important; color: var(--white) !important; }
+.work-card:nth-child(3) .work-label { background: var(--orange) !important; color: var(--white) !important; }
+.work-card:nth-child(4) .work-label { background: var(--amber) !important; }
+.work-card:nth-child(5) .work-label { background: var(--green) !important; color: var(--white) !important; }
+.work-card:nth-child(6) .work-label { background: var(--orange) !important; color: var(--white) !important; }
+.work-card:nth-child(7) .work-label { background: var(--amber) !important; }
+.work-card:nth-child(8) .work-label { background: var(--green) !important; color: var(--white) !important; }
+.work-card:nth-child(9) .work-label { background: var(--orange) !important; color: var(--white) !important; }
+
+/* stepサークル 3色ローテーション */
+.step:nth-child(1) .step-circle { border-color: var(--amber) !important; color: var(--amber) !important; }
+.step:nth-child(2) .step-circle { border-color: var(--green) !important; color: var(--green) !important; }
+.step:nth-child(3) .step-circle { border-color: var(--orange) !important; color: var(--orange) !important; }
+.step:nth-child(4) .step-circle { border-color: var(--amber) !important; color: var(--amber) !important; }
+.step:nth-child(1):hover .step-circle { background: var(--amber) !important; color: var(--dark) !important; }
+.step:nth-child(2):hover .step-circle { background: var(--green) !important; color: var(--white) !important; }
+.step:nth-child(3):hover .step-circle { background: var(--orange) !important; color: var(--white) !important; }
+.step:nth-child(4):hover .step-circle { background: var(--amber) !important; color: var(--dark) !important; }
+
+/* フロー横線グラデーション → 3色 */
+.flow-steps::before { background: linear-gradient(90deg, var(--amber), var(--green), var(--orange)) !important; }
+
+/* appeal-card 3色ローテーション */
+.appeal-card:nth-child(1) { border-top-color: var(--amber) !important; }
+.appeal-card:nth-child(2) { border-top-color: var(--green) !important; }
+.appeal-card:nth-child(3) { border-top-color: var(--orange) !important; }
+.appeal-card:nth-child(4) { border-top-color: var(--amber) !important; }
+
+/* voice-card 3色 */
+.voice-card:nth-child(1) { border-bottom-color: var(--amber) !important; }
+.voice-card:nth-child(2) { border-bottom-color: var(--green) !important; }
+.voice-card:nth-child(3) { border-bottom-color: var(--orange) !important; }
+
+/* job-card header 3色 */
+.job-card:nth-child(1) .job-card-header { border-left: 6px solid var(--amber); }
+.job-card:nth-child(2) .job-card-header { border-left: 6px solid var(--green); }
+.job-card:nth-child(3) .job-card-header { border-left: 6px solid var(--orange); }
+
+/* info-card 3色 */
+.info-card:nth-child(1) { border-top-color: var(--amber) !important; }
+.info-card:nth-child(2) { border-top-color: var(--green) !important; }
+.info-card:nth-child(3) { border-top-color: var(--orange) !important; }
+
+/* svc-img-badge 3色 */
+.svc-section:nth-of-type(1) .svc-img-badge { background: var(--amber) !important; color: var(--dark) !important; }
+.svc-section:nth-of-type(2) .svc-img-badge { background: var(--green) !important; color: var(--white) !important; }
+.svc-section:nth-of-type(3) .svc-img-badge { background: var(--orange) !important; color: var(--white) !important; }
+.svc-section:nth-of-type(4) .svc-img-badge { background: var(--amber) !important; color: var(--dark) !important; }
+
+/* page-hero ページごとにラベル色変更 → section-labelは amber固定でOK */
+/* overview-table th border-left 3色 */
+.overview-table tr:nth-child(3n+1) th { border-left-color: var(--amber) !important; }
+.overview-table tr:nth-child(3n+2) th { border-left-color: var(--green) !important; }
+.overview-table tr:nth-child(3n+3) th { border-left-color: var(--orange) !important; }
+
+/* job-table th border-left 3色 */
+.job-table tr:nth-child(odd) th { border-left-color: var(--amber) !important; }
+.job-table tr:nth-child(even) th { border-left-color: var(--green) !important; }
+
+/* マーキーアイテムのダイヤ色を3色ローテーション */
+/* CSSで::before nth対応は難しいのでJS側で対応 */
+
+/* btn-primary ホバー時にグリーン系シャドウ追加 */
+.btn-primary:hover { box-shadow: 0 8px 24px rgba(74,155,95,0.35) !important; }
+
+/* hero badge border 3色 */
+.badge:nth-child(1) { border-color: var(--amber) !important; }
+.badge:nth-child(2) { border-color: var(--green) !important; }
+.badge:nth-child(3) { border-color: var(--orange) !important; }
+
+/* slide-dot active グリーン */
+.dot.active { background: var(--green) !important; }
+
+/* CTA section背景にグリーンのサークル追加 */
+.cta::before { background: rgba(74,155,95,0.07) !important; }
+
+/* page-hero bottom decoration */
+.page-hero { border-bottom: 3px solid var(--green); }
+
+.marquee-item { --dot-color: var(--amber); }
+.marquee-item::before { color: var(--dot-color) !important; }
+
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="index.html" class="logo"><span class="logo-en">TOHOKU GIKEN</span><span class="logo-jp">株式会社東北技建</span></a>
+    <nav>
+      <a href="index.html">TOP</a>
+      <a href="service.html" class="active">施工案内</a>
+      <a href="works.html">施工実績</a>
+      <a href="company.html">会社概要</a>
+      <a href="recruit.html">採用情報</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:0482251293" class="tel-header">📞 048-225-1293</a>
+      <a href="contact.html" class="btn-header">無料相談</a>
+    </div>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">TOP</a><a href="service.html">施工案内</a><a href="works.html">施工実績</a>
+  <a href="company.html">会社概要</a><a href="recruit.html">採用情報</a><a href="contact.html">お問い合わせ</a>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <p class="breadcrumb"><a href="index.html">TOP</a> › <span>施工案内</span></p>
+    <p class="page-hero-label">OUR SERVICES</p>
+    <h1 class="page-hero-title">施工<em>案内</em></h1>
+    <p class="page-hero-sub">一般建築から店舗内装・注文家具・外壁塗装まで、4つの専門領域でお客様の理想を実現します。</p>
+  </div>
+</section>
+
+<!-- SERVICE 01 一般建築 -->
+<section class="svc-section light" id="architecture">
+  <div class="svc-inner">
+    <div class="svc-img-wrap fade-up">
+      <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80" alt="一般建築">
+      <span class="svc-img-badge">一般建築</span>
+    </div>
+    <div class="svc-body fade-up">
+      <p class="svc-num">SERVICE 01</p>
+      <h2 class="svc-title">一般建築</h2>
+      <p class="svc-lead">戸建住宅・集合住宅・事務所ビルなど、新築から増改築・リノベーションまで幅広く対応します。2級建築士6名・施工管理技士6名が在籍し、設計から施工まで一貫してお任せください。</p>
+      <ul class="svc-features">
+        <li>戸建住宅・アパート・マンションの新築工事</li>
+        <li>事務所・倉庫・店舗の建築工事</li>
+        <li>増築・改築・スケルトンリノベーション</li>
+        <li>住宅基礎工事・構造躯体工事</li>
+        <li>設計・確認申請サポート</li>
+      </ul>
+      <div class="price-note">💡 お見積り・現地調査は無料です。まずはお気軽にご相談ください。</div>
+      <a href="contact.html" class="btn-primary">無料相談・お見積りはこちら →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 02 店舗内装 -->
+<section class="svc-section dark" id="interior">
+  <div class="svc-inner reverse">
+    <div class="svc-img-wrap fade-up">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" alt="店舗内装">
+      <span class="svc-img-badge">店舗内装</span>
+    </div>
+    <div class="svc-body fade-up">
+      <p class="svc-num">SERVICE 02</p>
+      <h2 class="svc-title">店舗内装</h2>
+      <p class="svc-lead">飲食店・小売店・オフィス・クリニックなど、テナント改装から内装一式まで一貫施工。クロス・床・天井・LGS間仕切り・造作カウンターまで、専門職人が丁寧に仕上げます。</p>
+      <ul class="svc-features">
+        <li>クロス（壁紙）貼替え・天井仕上工事</li>
+        <li>床仕上工事（フローリング・タイル・CF等）</li>
+        <li>LGS軽量鉄骨・ボード間仕切り工事</li>
+        <li>造作カウンター・収納棚取付け</li>
+        <li>ユニットバス・水回り内装工事</li>
+        <li>オフィス・クリニック内装リフォーム</li>
+      </ul>
+      <div class="price-note">💡 設計・デザイン提案から施工まで、ワンストップでご対応可能です。</div>
+      <a href="contact.html" class="btn-primary">無料相談・お見積りはこちら →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 03 注文家具 -->
+<section class="svc-section cream" id="furniture">
+  <div class="svc-inner">
+    <div class="svc-img-wrap fade-up">
+      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&q=80" alt="注文家具">
+      <span class="svc-img-badge">注文家具</span>
+    </div>
+    <div class="svc-body fade-up">
+      <p class="svc-num">SERVICE 03</p>
+      <h2 class="svc-title">注文家具</h2>
+      <p class="svc-lead">熟練の家具職人・木工職人が、お客様の空間に合わせたオリジナル家具をオーダーメイドで製作します。既製品では実現できないサイズ・デザイン・素材を一点からご対応。</p>
+      <ul class="svc-features">
+        <li>造作収納棚・ウォークインクローゼット</li>
+        <li>店舗用カウンター・受付台・テーブル</li>
+        <li>住宅用キャビネット・TVボード・本棚</li>
+        <li>家具内装見習いスタッフによる丁寧な施工</li>
+        <li>木材・素材の選定からご相談可能</li>
+      </ul>
+      <div class="price-note">💡 サイズ・素材・仕上げをご要望に合わせてご提案します。</div>
+      <a href="contact.html" class="btn-primary">無料相談・お見積りはこちら →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE 04 外壁塗装 -->
+<section class="svc-section dark" id="painting">
+  <div class="svc-inner reverse">
+    <div class="svc-img-wrap fade-up">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80" alt="外壁塗装">
+      <span class="svc-img-badge">外壁塗装</span>
+    </div>
+    <div class="svc-body fade-up">
+      <p class="svc-num">SERVICE 04</p>
+      <h2 class="svc-title">外壁塗装</h2>
+      <p class="svc-lead">高圧洗浄・下地処理・シーリング打替えから仕上げ塗装まで、自社職人が一貫して丁寧に施工します。耐候性・耐久性に優れた塗料で建物を長期にわたって保護します。</p>
+      <ul class="svc-features">
+        <li>高圧洗浄・下地補修・ひび割れ補修</li>
+        <li>シーリング（コーキング）打替え工事</li>
+        <li>シリコン・フッ素・無機塗料による外壁塗装</li>
+        <li>屋根塗装・付帯部（雨樋・破風）塗装</li>
+        <li>アパート・マンション・工場の大規模修繕</li>
+      </ul>
+      <div class="price-note">💡 無料診断・カラーシミュレーションをご利用いただけます。</div>
+      <a href="contact.html" class="btn-primary">無料相談・お見積りはこちら →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2 class="cta-band-title fade-up">無料現地調査はこちら</h2>
+  <p class="cta-band-sub fade-up">お気軽にお電話またはフォームよりご相談ください。</p>
+  <div class="cta-band-btns fade-up">
+    <a href="contact.html" class="btn-primary">お問い合わせフォームへ →</a>
+  </div>
+  <a href="tel:0482251293" class="cta-band-tel fade-up">048-225-1293</a>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-en">TOHOKU GIKEN</div>
+        <div class="footer-logo-jp">株式会社東北技建</div>
+        <p class="footer-info">〒332-0011 埼玉県川口市元郷２丁目５−１７<br>TEL: 048-225-1293<br>代表取締役：齊藤 正</p>
+      </div>
+      <div>
+        <p class="footer-heading">SERVICES</p>
+        <ul class="footer-links">
+          <li><a href="service.html#architecture">一般建築</a></li>
+          <li><a href="service.html#interior">店舗内装</a></li>
+          <li><a href="service.html#furniture">注文家具</a></li>
+          <li><a href="service.html#painting">外壁塗装</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">PAGES</p>
+        <ul class="footer-links">
+          <li><a href="index.html">TOP</a></li>
+          <li><a href="works.html">施工実績</a></li>
+          <li><a href="company.html">会社概要</a></li>
+          <li><a href="recruit.html">採用情報</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom"><p class="footer-copy">© 2025 株式会社東北技建 All Rights Reserved.</p></div>
+  </div>
+</footer>
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('active');document.getElementById('mobileNav').classList.toggle('open')});
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+// マーキーアイテムに3色ローテーション
+(function(){
+  const items = document.querySelectorAll('.marquee-item');
+  const colors = ['var(--amber)', 'var(--green)', 'var(--orange)'];
+  items.forEach((el, i) => {
+    // ::before は直接変更できないのでカスタムプロパティで対応
+    el.style.setProperty('--dot-color', colors[i % 3]);
+  });
+})();
+</script>
+</body>
+</html>
